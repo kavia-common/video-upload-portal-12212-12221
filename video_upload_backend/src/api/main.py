@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 # Constants
 MAX_VIDEO_SIZE_BYTES = 500 * 1024 * 1024  # 500MB
-UPLOAD_DIR = Path("/src/upload")  # As per requirements
+UPLOAD_DIR = Path("/upload")  # Updated as per new requirements
 
 
 def ensure_upload_dir_exists() -> None:
