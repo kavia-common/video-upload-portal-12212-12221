@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 # Constants
 MAX_VIDEO_SIZE_BYTES = 500 * 1024 * 1024  # 500MB
-UPLOAD_DIR = Path("/src/upload")  # As per requirements
+UPLOAD_DIR = Path("./upload")  # Use relative path as per new requirements
 
 
 def ensure_upload_dir_exists() -> None:
@@ -50,7 +50,7 @@ app = FastAPI(
     title="Video Upload Backend",
     description=(
         "A FastAPI service to upload video files up to 500 MB. "
-        "Files are saved under the /upload directory."
+        "Files are saved under the ./upload directory."
     ),
     version="1.0.0",
     contact={"name": "Video Upload Service"},
@@ -128,7 +128,7 @@ def _validate_content_length(request: Request) -> Optional[int]:
     },
     summary="Upload a video file",
     description=(
-        "Accepts a video file upload up to 500MB and saves it under the /upload directory. "
+        "Accepts a video file upload up to 500MB and saves it under the ./upload directory. "
         "If the directory does not exist, it is created automatically. "
         "The endpoint enforces the size limit using Content-Length (if provided) and by "
         "streaming the file to disk while checking the cumulative size."
@@ -144,7 +144,7 @@ async def upload_video(
     ),
 ) -> UploadSuccessResponse:
     """
-    Upload a single video file and save to /upload.
+    Upload a single video file and save to ./upload.
 
     Parameters:
         request (Request): The incoming request, used to inspect headers for size checks.
